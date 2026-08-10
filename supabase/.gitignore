@@ -1,0 +1,4 @@
+# Supabase local development artifacts
+.branches
+db_migrations
+.temp
