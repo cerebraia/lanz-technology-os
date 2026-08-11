@@ -131,7 +131,11 @@ export async function createStorefrontOrder(input: CheckoutInput): Promise<Check
       p_currency: input.currency,
     })
 
-    if (error) return mapSqlError(error.message)
+    if (error) {
+      // Log server-side para diagnóstico en Railway — sin datos sensibles
+      console.error('[CHECKOUT] RPC error | code:', error.code, '| message:', error.message)
+      return mapSqlError(error.message)
+    }
 
     const result = data as {
       order_number:       string
@@ -149,7 +153,9 @@ export async function createStorefrontOrder(input: CheckoutInput): Promise<Check
       currency:          result.currency,
       idempotent:        result.idempotent ?? false,
     }
-  } catch {
+  } catch (err) {
+    // Log server-side — sin stack trace completo al usuario
+    console.error('[CHECKOUT] Unexpected exception:', err instanceof Error ? err.message : String(err))
     return { error: 'Error inesperado. Intenta nuevamente.' }
   }
 }
