@@ -35,20 +35,16 @@ export const metadata: Metadata = {
   },
 }
 
+// Iconos decorativos opcionales por slug; no determinan qué categorías existen
 const CATEGORY_ICONS: Record<string, string> = {
-  drones:          '🚁',
-  camaras:         '📷',
+  camaras:          '📷',
   'camaras-accion': '🎥',
-  accesorios:      '🔋',
-  estabilizadores: '🎬',
+  accesorios:       '🔋',
+  estabilizadores:  '🎬',
+  audio:            '🎙️',
+  energia:          '⚡',
+  drones:           '🚁',
 }
-
-const FEATURED_CATEGORIES = [
-  { label: 'Drones',          slug: 'drones',          desc: 'Vuela sin límites', icon: '🚁' },
-  { label: 'Cámaras',         slug: 'camaras',         desc: 'Captura cada momento', icon: '📷' },
-  { label: 'Accesorios',      slug: 'accesorios',      desc: 'Complementa tu equipo', icon: '🔋' },
-  { label: 'Estabilizadores', slug: 'estabilizadores', desc: 'Movimientos perfectos', icon: '🎬' },
-]
 
 const BENEFITS = [
   { icon: '🛡️', title: 'Garantía oficial', desc: 'Productos con garantía de fábrica y soporte técnico.' },
@@ -119,7 +115,7 @@ export default async function HomePage() {
             </h1>
 
             <p className="animate-slide-up delay-225 mb-10 text-base leading-relaxed text-lz-muted sm:text-lg">
-              Drones, cámaras, estabilizadores y accesorios premium. Todo lo que necesitas para capturar el mundo desde otra perspectiva.
+              Cámaras, audio, estabilizadores y tecnología premium. Todo lo que necesitas para llevar tus ideas más lejos.
             </p>
 
             <div className="animate-slide-up delay-300 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -149,40 +145,37 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* ── Categorías destacadas ─────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-lz-primary">Explora por categoría</p>
-            <h2 className="text-2xl font-bold text-lz-text sm:text-3xl">Encuentra lo que buscas</h2>
-          </div>
+        {/* ── Categorías — solo se renderiza si Supabase retorna datos ─── */}
+        {categories.length > 0 && (
+          <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-lz-primary">Explora por categoría</p>
+              <h2 className="text-2xl font-bold text-lz-text sm:text-3xl">Encuentra lo que buscas</h2>
+            </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {(categories.length > 0 ? categories.slice(0, 4) : FEATURED_CATEGORIES).map((cat, i) => {
-              const icon = (cat as { icon?: string }).icon
-                ?? CATEGORY_ICONS[(cat as { slug: string }).slug]
-                ?? '📦'
-              const slug = (cat as { slug: string }).slug
-              const label = (cat as { name?: string; label?: string }).name ?? (cat as { label: string }).label
-              const desc  = (cat as { description?: string | null; desc?: string }).description
-                ?? (cat as { desc?: string }).desc
-                ?? ''
-
-              return (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {categories.slice(0, 4).map((cat) => (
                 <Link
-                  key={slug ?? i}
-                  href={`/catalog?category=${slug}`}
+                  key={cat.slug}
+                  href={`/catalog?category=${cat.slug}`}
                   className="group flex flex-col gap-4 rounded-2xl border border-lz-border bg-lz-surface p-6 transition-all duration-200 hover:border-lz-primary/50 hover:bg-lz-surface hover:shadow-[0_4px_24px_rgba(123,47,255,0.12)] active:scale-[0.98]"
                 >
-                  <span className="text-3xl transition-transform duration-200 group-hover:scale-110">{icon}</span>
+                  <span className="text-3xl transition-transform duration-200 group-hover:scale-110">
+                    {CATEGORY_ICONS[cat.slug] ?? '📦'}
+                  </span>
                   <div>
-                    <p className="font-semibold text-lz-text transition-colors duration-200 group-hover:text-lz-accent">{label}</p>
-                    {desc && <p className="mt-1 text-xs text-lz-muted">{desc}</p>}
+                    <p className="font-semibold text-lz-text transition-colors duration-200 group-hover:text-lz-accent">
+                      {cat.name}
+                    </p>
+                    {cat.description && (
+                      <p className="mt-1 text-xs text-lz-muted">{cat.description}</p>
+                    )}
                   </div>
                 </Link>
-              )
-            })}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ── Productos destacados ──────────────────────────────────────── */}
         {featured.length > 0 && (
