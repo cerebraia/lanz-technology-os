@@ -14,24 +14,24 @@ const YT_FEATURED_VIDEO = 'https://www.youtube.com/watch?v=MDRHuMUHH9Q&t=31s'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lanz.tech'
 
-// Regenerar el Home cada 60 segundos (ISR) para reflejar cambios de catálogo sin redeploy.
-// Las Server Actions de catálogo llaman revalidatePath('/') para invalidación inmediata.
-export const revalidate = 60
+// Renderizado dinámico en cada request: garantiza datos frescos de Supabase en Railway.
+// ISR (revalidate=60) no es fiable en Railway porque el cache es efímero entre reinicios.
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title:       'Lanz Technology — Drones, Cámaras y Tecnología Premium',
-  description: 'Tienda oficial de Lanz Technology. Drones DJI, cámaras, estabilizadores y accesorios premium. Envíos a todo el país.',
+  title:       'Lanz Technology | Productos DJI y Tecnología Premium en Venezuela',
+  description: 'Encuentra productos DJI, cámaras, micrófonos, estabilizadores, accesorios y tecnología premium en Lanz Technology. Delivery gratis en Caracas y envíos nacionales.',
   alternates:  { canonical: SITE_URL },
   openGraph: {
-    title:       'Lanz Technology — Drones, Cámaras y Tecnología Premium',
-    description: 'Tienda oficial de Lanz Technology. Drones DJI, cámaras y accesorios premium. Envíos a todo el país.',
+    title:       'Lanz Technology | Productos DJI y Tecnología Premium',
+    description: 'Productos DJI, cámaras, audio, estabilizadores, accesorios y tecnología premium en Venezuela.',
     url:         SITE_URL,
     type:        'website',
   },
   twitter: {
     card:        'summary_large_image',
-    title:       'Lanz Technology — Drones, Cámaras y Tecnología Premium',
-    description: 'Tienda oficial. Drones DJI, cámaras y accesorios premium. Envíos a todo el país.',
+    title:       'Lanz Technology | Productos DJI y Tecnología Premium',
+    description: 'Productos DJI, cámaras, audio, estabilizadores y tecnología premium en Venezuela.',
   },
 }
 
@@ -63,7 +63,7 @@ const organizationSchema = {
   '@type':    'Organization',
   name:        'Lanz Technology',
   url:         SITE_URL,
-  description: 'Tienda oficial de tecnología premium: drones DJI, cámaras y accesorios.',
+  description: 'Tienda especializada en productos DJI y tecnología premium: cámaras, audio, estabilizadores y accesorios.',
 }
 
 const webSiteSchema = {

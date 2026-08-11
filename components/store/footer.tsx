@@ -65,7 +65,7 @@ export function StoreFooter() {
               <span className="text-[10px] tracking-[0.25em] text-lz-muted">TECHNOLOGY</span>
             </Link>
             <p className="mt-4 max-w-xs text-xs leading-relaxed text-lz-muted">
-              Tecnología premium en drones, cámaras y accesorios. Especialistas DJI. Envíos a todo el país.
+              Productos DJI y tecnología premium en Venezuela. Cámaras, audio, estabilizadores, accesorios y soluciones para creadores.
             </p>
             {/* Social */}
             <div className="mt-5 flex items-center gap-3">

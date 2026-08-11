@@ -12,18 +12,18 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lanz.tech'
 
 export const metadata: Metadata = {
   title:       'Catálogo',
-  description: 'Explora drones DJI, cámaras, estabilizadores y accesorios premium seleccionados por Lanz Technology.',
+  description: 'Explora productos DJI, cámaras, micrófonos, estabilizadores y accesorios premium seleccionados por Lanz Technology. Tecnología para creadores en Venezuela.',
   alternates:  { canonical: `${SITE_URL}/catalog` },
   openGraph: {
     title:       'Catálogo — Lanz Technology',
-    description: 'Tecnología premium: drones, cámaras y accesorios.',
+    description: 'Productos DJI, cámaras, audio, estabilizadores y accesorios premium en Venezuela.',
     url:         `${SITE_URL}/catalog`,
     type:        'website',
   },
   twitter: {
     card:        'summary_large_image',
     title:       'Catálogo — Lanz Technology',
-    description: 'Drones DJI, cámaras, estabilizadores y accesorios premium.',
+    description: 'Productos DJI, cámaras, micrófonos, estabilizadores y accesorios premium.',
   },
 }
 

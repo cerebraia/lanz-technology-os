@@ -3,22 +3,22 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title:       'Nosotros',
-  description: 'Conoce a Lanz Technology: tu aliado en tecnología de drones, cámaras y equipos premium. Distribuidores oficiales DJI con experiencia de compra transparente.',
+  description: 'Conoce a Lanz Technology: tienda venezolana especializada en productos DJI y tecnología premium. Cámaras, audio, estabilizadores y accesorios con atención personalizada.',
   alternates:  { canonical: '/about' },
   openGraph: {
     title:       'Nosotros — Lanz Technology',
-    description: 'Conoce a Lanz Technology: tu aliado en tecnología de drones, cámaras y equipos premium.',
+    description: 'Tienda venezolana especializada en productos DJI, cámaras, audio, estabilizadores y tecnología premium.',
     type:        'website',
   },
   twitter: {
     card:        'summary',
     title:       'Nosotros — Lanz Technology',
-    description: 'Tu aliado en tecnología de drones, cámaras y equipos premium.',
+    description: 'Especializados en productos DJI y tecnología premium en Venezuela.',
   },
 }
 
 const VALUES = [
-  { icon: '🚀', title: 'Innovación', desc: 'Traemos lo último en tecnología aérea y de imagen al mercado.' },
+  { icon: '🚀', title: 'Innovación', desc: 'Traemos lo último en tecnología DJI y equipos premium al mercado venezolano.' },
   { icon: '🛡️', title: 'Confianza', desc: 'Productos originales con garantía, sin intermediarios.' },
   { icon: '🤝', title: 'Asesoría real', desc: 'Te acompañamos antes y después de tu compra.' },
   { icon: '⚡', title: 'Rapidez', desc: 'Respuesta inmediata y procesos sin complicaciones.' },
@@ -35,10 +35,10 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-lz-primary">Nuestra historia</p>
           <h1 className="mb-6 text-3xl font-bold text-lz-text sm:text-4xl">
-            Acercamos la tecnología premium a quienes la sueñan
+            Tecnología que impulsa tus ideas
           </h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-lz-muted">
-            Lanz Technology nació de la pasión por la tecnología de drones y fotografía aérea. Hoy somos el destino de confianza para pilotos, creadores de contenido y profesionales que exigen lo mejor.
+            Lanz Technology es una tienda venezolana especializada en productos DJI y tecnología premium. Seleccionamos equipos para creadores de contenido, profesionales y usuarios que buscan soluciones confiables en cámaras, audio, estabilización y accesorios tecnológicos.
           </p>
         </div>
       </section>
@@ -50,14 +50,14 @@ export default function AboutPage() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-lz-primary">Misión</p>
             <h2 className="mb-4 text-xl font-bold text-lz-text">Tecnología al alcance de quienes crean</h2>
             <p className="leading-relaxed text-lz-muted">
-              Democratizar el acceso a equipos de alta gama — drones, cámaras, estabilizadores y accesorios — ofreciendo productos originales, asesoría honesta y un proceso de compra transparente.
+              Democratizar el acceso a equipos de alta gama — cámaras, audio, estabilizadores y accesorios — ofreciendo productos originales, asesoría honesta y un proceso de compra transparente.
             </p>
           </div>
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-lz-primary">Visión</p>
             <h2 className="mb-4 text-xl font-bold text-lz-text">Ser el aliado tecnológico de la región</h2>
             <p className="leading-relaxed text-lz-muted">
-              Construir la comunidad de creadores y pilotos más grande del país, conectando personas con herramientas que amplían lo que pueden crear, explorar y comunicar.
+              Construir la comunidad de creadores más grande del país, conectando personas con herramientas que amplían lo que pueden crear, explorar y comunicar.
             </p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-lz-primary">Nuestra especialidad</p>
             <h2 className="mb-4 text-xl font-bold text-lz-text">Especialistas en DJI</h2>
             <p className="mb-4 leading-relaxed text-lz-muted">
-              DJI es el fabricante líder mundial de drones y tecnología de imagen aérea. Somos distribuidores con experiencia directa en la línea completa: Mavic, Mini, Air, Avata, Osmo, Ronin y accesorios.
+              DJI es el fabricante líder mundial de tecnología de imagen y estabilización. Estamos especializados en toda la línea de productos: Mavic, Mini, Air, Avata, Osmo, Ronin y accesorios.
             </p>
             <p className="leading-relaxed text-lz-muted">
               Conocemos cada producto en profundidad. Eso nos permite asesorarte con honestidad: te recomendamos lo que realmente necesitas, no el modelo más caro.

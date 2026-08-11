@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 }
 
 const COVERED = [
-  'Drones DJI y accesorios originales',
+  'Productos DJI y accesorios originales',
   'Cámaras de acción GoPro y DJI Osmo',
   'Estabilizadores y gimbals',
   'Baterías y cargadores originales',

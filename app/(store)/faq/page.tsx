@@ -83,7 +83,7 @@ const FAQ_SECTIONS = [
         a: 'Sí, todos los productos DJI que vendemos son 100% originales, importados legalmente. No trabajamos con réplicas ni productos de procedencia dudosa.',
       },
       {
-        q: '¿Ofrecen soporte técnico para drones DJI?',
+        q: '¿Ofrecen soporte técnico para productos DJI?',
         a: 'Brindamos orientación técnica básica y te ayudamos a contactar al soporte oficial de DJI cuando es necesario. Para reparaciones fuera de garantía, trabajamos con técnicos especializados.',
       },
       {

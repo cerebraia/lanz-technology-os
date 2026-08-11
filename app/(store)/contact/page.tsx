@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/store/contact-form'
 
 export const metadata: Metadata = {
   title:       'Contacto',
-  description: 'Contáctanos por WhatsApp, correo o formulario. Atención personalizada en Lanz Technology — especialistas en drones DJI, cámaras y tecnología premium.',
+  description: 'Contáctanos por WhatsApp, correo o formulario. Atención personalizada en Lanz Technology — especializados en productos DJI y tecnología premium.',
   alternates:  { canonical: '/contact' },
   openGraph: {
     title:       'Contacto — Lanz Technology',
