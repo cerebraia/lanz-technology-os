@@ -1,5 +1,5 @@
 // Datos públicos del catálogo.
-// Usa service_role + filtros explícitos hasta que migration 009 esté aplicada.
+// Usa anon key + RLS de migration 009. Los filtros explícitos son defensa en profundidad.
 // Nunca selecciona reference_cost ni unit_cost.
 import { createStoreClient } from '@/lib/supabase/store-server'
 import { getPublicImageUrl } from '@/lib/utils/storage'

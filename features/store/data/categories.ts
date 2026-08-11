@@ -1,5 +1,5 @@
 // Datos públicos de categorías.
-// Usa service_role + filtros explícitos hasta que migration 009 esté aplicada.
+// Usa anon key + RLS de migration 009. El filtro is_active=true es defensa en profundidad.
 import { createStoreClient } from '@/lib/supabase/store-server'
 
 export type PublicCategory = {
