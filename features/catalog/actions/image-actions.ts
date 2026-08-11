@@ -82,6 +82,7 @@ export async function uploadProductImageAction(
   }
 
   revalidatePath(`/admin/catalog/products/${productId}`)
+  revalidatePath('/')
   return { success: true, imageId: imageRow.id, storagePath: filename }
 }
 
@@ -122,6 +123,7 @@ export async function deleteProductImageAction(
   }
 
   revalidatePath(`/admin/catalog/products/${productId}`)
+  revalidatePath('/')
   return {}
 }
 
@@ -145,6 +147,7 @@ export async function setPrimaryImageAction(
     .eq('id', imageId)
 
   revalidatePath(`/admin/catalog/products/${productId}`)
+  revalidatePath('/')
   return {}
 }
 

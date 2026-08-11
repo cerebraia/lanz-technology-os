@@ -145,6 +145,8 @@ export async function updateProductAction(
 
   revalidatePath('/admin/catalog/products')
   revalidatePath(`/admin/catalog/products/${id}`)
+  revalidatePath('/')
+  revalidatePath('/catalog')
   return { success: true, message: 'Producto actualizado.' }
 }
 
@@ -198,6 +200,8 @@ export async function publishProductAction(
 
   revalidatePath('/admin/catalog/products')
   revalidatePath(`/admin/catalog/products/${id}`)
+  revalidatePath('/')
+  revalidatePath('/catalog')
   return {}
 }
 
@@ -218,6 +222,8 @@ export async function hideProductAction(
 
   revalidatePath('/admin/catalog/products')
   revalidatePath(`/admin/catalog/products/${id}`)
+  revalidatePath('/')
+  revalidatePath('/catalog')
   return {}
 }
 
@@ -238,6 +244,8 @@ export async function setDraftAction(
 
   revalidatePath('/admin/catalog/products')
   revalidatePath(`/admin/catalog/products/${id}`)
+  revalidatePath('/')
+  revalidatePath('/catalog')
   return {}
 }
 
@@ -258,6 +266,8 @@ export async function archiveProductAction(
 
   revalidatePath('/admin/catalog/products')
   revalidatePath(`/admin/catalog/products/${id}`)
+  revalidatePath('/')
+  revalidatePath('/catalog')
   return {}
 }
 

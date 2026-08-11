@@ -170,7 +170,9 @@ export async function getPublishedProducts(
 export async function getFeaturedProducts(limit = 8): Promise<StoreProduct[]> {
   try {
     const supabase = createStoreClient()
-    const { data, error } = await supabase
+
+    // 1. Productos destacados
+    const { data: featuredData, error: featuredError } = await supabase
       .from('products')
       .select(PUBLIC_PRODUCT_COLS)
       .eq('is_published', true)
@@ -181,9 +183,36 @@ export async function getFeaturedProducts(limit = 8): Promise<StoreProduct[]> {
       .order('created_at', { ascending: false })
       .limit(limit)
 
-    if (error) return []
+    if (featuredError) return []
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (data as any[]).map(mapToStoreProduct)
+    const featured = (featuredData as any[]).map(mapToStoreProduct)
+    if (featured.length >= limit) return featured
+
+    // 2. Fallback: completar con publicados recientes (sin duplicar destacados)
+    const remaining    = limit - featured.length
+    const featuredIds  = new Set(featured.map(p => p.id))
+
+    const { data: recentData, error: recentError } = await supabase
+      .from('products')
+      .select(PUBLIC_PRODUCT_COLS)
+      .eq('is_published', true)
+      .eq('status', 'active')
+      .is('archived_at', null)
+      .not('published_at', 'is', null)
+      .eq('is_featured', false)
+      .order('created_at', { ascending: false })
+      .limit(remaining)
+
+    if (recentError || !recentData) return featured
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const recent = (recentData as any[])
+      .map(mapToStoreProduct)
+      .filter(p => !featuredIds.has(p.id))
+      .slice(0, remaining)
+
+    return [...featured, ...recent]
   } catch {
     return []
   }
