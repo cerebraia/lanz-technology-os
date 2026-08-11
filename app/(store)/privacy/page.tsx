@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { STORE_CONFIG } from '@/config/store'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad',
@@ -232,7 +233,7 @@ export default function PrivacyPage() {
               Contactar
             </Link>
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '584266540669'}`}
+              href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center gap-2 rounded-xl border border-lz-border px-6 text-sm font-medium text-lz-muted transition-all hover:border-lz-primary/40 hover:text-lz-text"

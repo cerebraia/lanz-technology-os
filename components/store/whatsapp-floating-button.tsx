@@ -1,12 +1,13 @@
 'use client'
 
-const WA_NUMBER  = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
+import { STORE_CONFIG } from '@/config/store'
+
 const WA_MESSAGE = encodeURIComponent(
   'Hola, equipo de Lanz Technology. Quiero recibir información sobre sus productos.'
 )
 
 function buildWaLink() {
-  if (WA_NUMBER) return `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`
+  if (STORE_CONFIG.whatsappNumber) return `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${WA_MESSAGE}`
   // Fallback: abre WhatsApp Web sin número específico
   return `https://web.whatsapp.com/`
 }
@@ -25,12 +26,14 @@ export function WhatsAppFloatingButton() {
         'fixed bottom-6 right-6 z-50',
         'flex h-14 w-14 items-center justify-center',
         'rounded-full bg-[#25D366] text-white',
-        'shadow-[0_4px_20px_rgba(37,211,102,0.45)]',
-        'transition-all duration-200',
-        'hover:scale-110 hover:shadow-[0_6px_28px_rgba(37,211,102,0.55)]',
-        'active:scale-100',
+        'transition-transform duration-200',
+        'hover:scale-110 active:scale-95',
         // safe-area para móviles con notch/barra de navegación
         'mb-[env(safe-area-inset-bottom,0px)]',
+        // Entrada suave al cargar
+        'animate-float-in',
+        // Pulse sutil periódico (solo box-shadow, sin layout)
+        'animate-wa-glow',
       ].join(' ')}
     >
       {/* WhatsApp icon */}

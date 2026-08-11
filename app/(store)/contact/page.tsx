@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ContactForm } from '@/components/store/contact-form'
+import { ContactForm }  from '@/components/store/contact-form'
+import { STORE_CONFIG } from '@/config/store'
 
 export const metadata: Metadata = {
   title:       'Contacto',
@@ -18,8 +19,7 @@ export const metadata: Metadata = {
   },
 }
 
-const waPhone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
-const waUrl   = `https://wa.me/${waPhone}`
+const waUrl   = `https://wa.me/${STORE_CONFIG.whatsappNumber}`
 const waMsg   = encodeURIComponent('Hola, tengo una consulta sobre sus productos.')
 
 const CHANNELS = [

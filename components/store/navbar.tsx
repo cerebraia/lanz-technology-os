@@ -9,7 +9,6 @@ import { CartDrawer }  from './cart-drawer'
 
 const NAV = [
   { label: 'Catálogo', href: '/catalog' },
-  { label: 'Ofertas',  href: '/catalog?sale=true' },
   { label: 'Nosotros', href: '/about' },
   { label: 'Contacto', href: '/contact' },
 ]

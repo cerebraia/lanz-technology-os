@@ -159,3 +159,74 @@ body {
 .animate-fade-in {
   animation: fadeIn 220ms ease forwards;
 }
+
+/* =========================================================
+   Botón flotante de WhatsApp — entrada y pulse sutil
+   ========================================================= */
+
+@keyframes floatButtonIn {
+  from { opacity: 0; transform: scale(0.65) translateY(10px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0px);  }
+}
+
+/* Pulse muy sutil — solo box-shadow, sin layout change */
+@keyframes waGlow {
+  0%, 70%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+  35%            { box-shadow: 0 6px 32px rgba(37,211,102,0.65), 0 0 0 8px rgba(37,211,102,0.07); }
+}
+
+.animate-float-in {
+  animation: floatButtonIn 0.5s cubic-bezier(0.22,1,0.36,1) 1.2s both;
+}
+
+.animate-wa-glow {
+  animation: waGlow 4.5s ease-in-out 3.5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-in  { animation: none; opacity: 1; }
+  .animate-wa-glow   { animation: none; }
+}
+
+/* =========================================================
+   Hero — degradados animados premium
+   Solo transform + opacity para evitar repaint costoso.
+   prefers-reduced-motion: detiene toda la animación.
+   ========================================================= */
+
+/* Glow 1: deriva diagonal lenta (incluye translate base del centrado) */
+@keyframes heroDrift1 {
+  0%   { transform: translate(-50%, -33%) scale(1);    }
+  25%  { transform: translate(-46%, -37%) scale(1.07); }
+  50%  { transform: translate(-50%, -29%) scale(1.03); }
+  75%  { transform: translate(-54%, -36%) scale(0.97); }
+  100% { transform: translate(-50%, -33%) scale(1);    }
+}
+
+/* Glow 2: deriva horizontal con leve escala */
+@keyframes heroDrift2 {
+  0%   { transform: translate(0px, 0px)    scale(1);    }
+  40%  { transform: translate(30px, -10px) scale(1.09); }
+  70%  { transform: translate(-12px, 6px)  scale(0.96); }
+  100% { transform: translate(0px, 0px)    scale(1);    }
+}
+
+/* Glow 3: deriva vertical con escala suave, inicia con delay */
+@keyframes heroDrift3 {
+  0%   { transform: translate(0px, 0px)    scale(1);    }
+  50%  { transform: translate(18px, -22px) scale(1.11); }
+  100% { transform: translate(0px, 0px)    scale(1);    }
+}
+
+.animate-hero-glow-1 { animation: heroDrift1 22s ease-in-out infinite; }
+.animate-hero-glow-2 { animation: heroDrift2 17s ease-in-out infinite; }
+.animate-hero-glow-3 { animation: heroDrift3 28s ease-in-out infinite 5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-glow-1 {
+    animation: none;
+    transform: translate(-50%, -33%); /* restaura posición estática */
+  }
+  .animate-hero-glow-2,
+  .animate-hero-glow-3 { animation: none; }
+}

@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
-import Link from 'next/link'
+import { useEffect }  from 'react'
+import Link           from 'next/link'
+import { STORE_CONFIG } from '@/config/store'
 
 const NAV = [
   { label: 'Catálogo',  href: '/catalog' },
-  { label: 'Ofertas',   href: '/catalog?sale=true' },
   { label: 'Nosotros',  href: '/about' },
   { label: 'Contacto',  href: '/contact' },
 ]
@@ -60,7 +60,7 @@ export function MobileMenu({ open, onClose }: Props) {
 
         <div className="mt-auto border-t border-lz-border p-4">
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''}`}
+            href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`}
             target="_blank"
             rel="noreferrer"
             className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] text-sm font-semibold text-white"

@@ -4,7 +4,6 @@ import { STORE_CONFIG } from '@/config/store'
 const LINKS = {
   tienda: [
     { label: 'Catálogo',   href: '/catalog' },
-    { label: 'Ofertas',    href: '/catalog?sale=true' },
     { label: 'Novedades',  href: '/catalog?sort=newest' },
   ],
   empresa: [

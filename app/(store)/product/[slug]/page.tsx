@@ -10,10 +10,11 @@ import { RelatedProducts }     from '@/components/store/related-products'
 import { ProductCardSkeleton } from '@/components/store/store-skeleton'
 import { YouTubeEmbed }        from '@/components/store/youtube-embed'
 import { getPublishedProductBySlug } from '@/features/store/data/products'
+import { STORE_CONFIG }              from '@/config/store'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
+const WA_NUMBER = STORE_CONFIG.whatsappNumber
 const SITE_URL  = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lanz.tech'
 
 // cache() deduplica la query entre generateMetadata y la función page()
