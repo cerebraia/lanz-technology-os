@@ -6,7 +6,8 @@
 
 export const STORE_CONFIG = {
   name:             'Lanz Technology',
-  whatsappNumber:   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '',
+  whatsappNumber:   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER  ?? '',
+  whatsappDisplay:  process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '',
   instagramUrl:     process.env.NEXT_PUBLIC_INSTAGRAM_URL    ?? 'https://www.instagram.com/lanztechnology/',
   tiktokUrl:        process.env.NEXT_PUBLIC_TIKTOK_URL       ?? 'https://www.tiktok.com/@lanztechnology',
   youtubeUrl:       process.env.NEXT_PUBLIC_YOUTUBE_URL      ?? 'https://www.youtube.com/@lanz_technology',

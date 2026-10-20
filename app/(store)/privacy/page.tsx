@@ -23,7 +23,7 @@ const SECTIONS = [
       'El responsable del tratamiento de los datos personales recabados a través de este sitio web es:',
       '**Lanz Technology**',
       'Correo de contacto: ventas@lanz.tech',
-      'WhatsApp: +58 426-6540669',
+      `WhatsApp: ${STORE_CONFIG.whatsappDisplay}`,
       'Venezuela',
       'Para cualquier consulta relacionada con el tratamiento de tus datos, puedes contactarnos por los canales anteriores.',
     ],
@@ -90,7 +90,7 @@ const SECTIONS = [
     body: [
       'De conformidad con la Ley de Infogobierno y las normas aplicables en Venezuela, tienes derecho a:',
       '• **Acceso:** conocer qué datos tuyos tenemos registrados.\n• **Rectificación:** corregir datos inexactos o desactualizados.\n• **Eliminación:** solicitar el borrado de tus datos cuando ya no sean necesarios.\n• **Oposición:** oponerte al tratamiento de tus datos en determinadas circunstancias.\n• **Portabilidad:** recibir tus datos en un formato estructurado y legible.',
-      'Para ejercer cualquiera de estos derechos, contáctanos por WhatsApp (+58 426-6540669) o al correo ventas@lanz.tech indicando tu nombre, el derecho que deseas ejercer y, si aplica, el número de pedido relacionado.',
+      `Para ejercer cualquiera de estos derechos, contáctanos por WhatsApp (${STORE_CONFIG.whatsappDisplay}) o al correo ventas@lanz.tech indicando tu nombre, el derecho que deseas ejercer y, si aplica, el número de pedido relacionado.`,
       'Responderemos tu solicitud en un plazo máximo de 15 días hábiles.',
     ],
   },
@@ -125,7 +125,7 @@ const SECTIONS = [
     title: '12. Contacto',
     body: [
       'Si tienes preguntas, comentarios o solicitudes relacionadas con esta Política de Privacidad, puedes contactarnos:',
-      '• **WhatsApp:** +58 426-6540669\n• **Correo:** ventas@lanz.tech\n• **Formulario:** /contact',
+      `• **WhatsApp:** ${STORE_CONFIG.whatsappDisplay}\n• **Correo:** ventas@lanz.tech\n• **Formulario:** /contact`,
       'Estamos comprometidos con la transparencia y responderemos todas tus consultas a la brevedad posible.',
     ],
   },
