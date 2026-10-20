@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import Script from 'next/script'
 import { CartProvider } from '@/lib/store/cart'
 import './globals.css'
 
@@ -58,25 +57,22 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${poppins.variable} h-full antialiased`}>
+      <head>
+        {GA_ID && (
+          <>
+            {/* Google Analytics 4 */}
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <CartProvider>{children}</CartProvider>
       </body>
-      {GA_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}');
-            `}
-          </Script>
-        </>
-      )}
     </html>
   )
 }
