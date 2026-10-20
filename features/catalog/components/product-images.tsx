@@ -75,33 +75,50 @@ export function ProductImages({ productId, images }: ProductImagesProps) {
 
     startPending(async () => {
       setError(null)
-      const result = await uploadProductImageAction(productId, fd)
-      if (result && 'error' in result) setError(result.error)
-      if (inputRef.current) inputRef.current.value = ''
+      try {
+        const result = await uploadProductImageAction(productId, fd)
+        if (result && 'error' in result) setError(result.error)
+      } catch {
+        setError('No se pudo subir la imagen. Verifica el archivo e inténtalo de nuevo.')
+      } finally {
+        if (inputRef.current) inputRef.current.value = ''
+      }
     })
   }
 
   async function handleDelete(imageId: string, storagePath: string) {
     startPending(async () => {
       setError(null)
-      const result = await deleteProductImageAction(imageId, storagePath, productId)
-      if (result.error) setError(result.error)
+      try {
+        const result = await deleteProductImageAction(imageId, storagePath, productId)
+        if (result.error) setError(result.error)
+      } catch {
+        setError('No se pudo eliminar la imagen. Inténtalo de nuevo.')
+      }
     })
   }
 
   async function handleSetPrimary(imageId: string) {
     startPending(async () => {
       setError(null)
-      const result = await setPrimaryImageAction(imageId, productId)
-      if (result.error) setError(result.error)
+      try {
+        const result = await setPrimaryImageAction(imageId, productId)
+        if (result.error) setError(result.error)
+      } catch {
+        setError('No se pudo actualizar la imagen principal. Inténtalo de nuevo.')
+      }
     })
   }
 
   async function handleMove(imageId: string, direction: 'up' | 'down') {
     startPending(async () => {
       setError(null)
-      const result = await moveImageAction(imageId, productId, direction)
-      if (result.error) setError(result.error)
+      try {
+        const result = await moveImageAction(imageId, productId, direction)
+        if (result.error) setError(result.error)
+      } catch {
+        setError('No se pudo reordenar la imagen. Inténtalo de nuevo.')
+      }
     })
   }
 
