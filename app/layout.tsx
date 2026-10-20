@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import Script from 'next/script'
 import { CartProvider } from '@/lib/store/cart'
 import './globals.css'
 
@@ -11,6 +12,7 @@ const poppins = Poppins({
 })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lanz.tech'
+const GA_ID    = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -59,6 +61,22 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <CartProvider>{children}</CartProvider>
       </body>
+      {GA_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `}
+          </Script>
+        </>
+      )}
     </html>
   )
 }
